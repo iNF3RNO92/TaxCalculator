@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Tax Calculation";
+}
+
+<form method="post">
+    <div asp-validation-summary="All"></div>
+    <div>
+        <div>
+            <label asp-for="@Model.TaxRequestModel.PostalCode"></label>
+            <input asp-for="@Model.TaxRequestModel.PostalCode" />
+            <span asp-validation-for="@Model.TaxRequestModel.PostalCode"></span>
+        </div>
+    </div>
+    <div>
+        <div>
+            <label asp-for="@Model.TaxRequestModel.AnualSalary"></label>
+            <input asp-for="@Model.TaxRequestModel.AnualSalary" />
+            <span asp-validation-for="@Model.TaxRequestModel.AnualSalary"></span>
+        </div>
+    </div>
+    <div>
+        <button type="submit">Calculate</button>
+    </div>
+    @if (Model.TaxRequestModel.Result > 0)
+    {
+        <div><label>Taxable Amount: @Model.TaxRequestModel.Result</label></div>
+    }
+</form>
